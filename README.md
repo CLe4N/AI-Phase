@@ -1,1 +1,1 @@
-# Ai-Phase
+This is an improvement of my "Path Finding Ai" project. Now, The Ai has two phases of operating. First is the Pratoling phase. The Pratoling phase is when the player is undetected. The bot is touring around a set of waypoints on the map. The next phase is the Chasing phase. this phase is when Ai is detecting the player and start chasing the player. The Ai is reset to the Pratoling phase if the player can escape form Ai's detecting area

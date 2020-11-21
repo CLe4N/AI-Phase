@@ -13,40 +13,39 @@ public class Pratol_Bot : MonoBehaviour
 
     void Start()
     {
-        Botagent = GetComponent<NavMeshAgent>();
+        Botagent = GetComponent<NavMeshAgent>(); // access NavMeshAgent and Bot_Sensor component
         Sensor = GetComponent<Bot_Sensor>();
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.FindGameObjectWithTag("Player").transform; // find gameobejct with tag "Player"
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Sensor.Detected == false)
+        if (Sensor.Detected == false) // if player is not detect
         {
-            Pratoling();
+            Pratoling(); // call method "Pratoling"
         }
         else
         {
-            Chasing();
+            Chasing(); // call method "Chasing"
         }
     }
 
     void Pratoling()
     {
-        Botagent.destination = WayPoint[WayPointCount].position;
-        if (Vector3.Distance(transform.position, WayPoint[WayPointCount].position) < 0.1f)
+        Botagent.destination = WayPoint[WayPointCount].position; // go to waypoint[WayPointCount]
+        if (Vector3.Distance(transform.position, WayPoint[WayPointCount].position) < 0.1f) // if this gameobject is closer to waypoint[WayPointCount] than 0.1
         {
-            WayPointCount += 1;
-            if(WayPointCount >= WayPoint.Length)
+            WayPointCount += 1; // WayPointCount increase by 1
+            if(WayPointCount >= WayPoint.Length) // if WayPointCount is more than WayPoint[] Length
             {
-                WayPointCount = 0;
+                WayPointCount = 0; // WayPointCount = 0
             }
         }
     }
 
     void Chasing()
     {
-        Botagent.destination = Player.position;
+        Botagent.destination = Player.position; // go to player
     }
 }

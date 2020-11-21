@@ -9,22 +9,23 @@ public class Stat : MonoBehaviour
     Transform botPos;
     void Start()
     {
-        txt = GetComponent<TextMesh>();
-        sensor = GetComponentInParent<Bot_Sensor>();
-        botPos = GameObject.Find("Bot").transform;
+        txt = GetComponent<TextMesh>(); // access TextMesh component
+        sensor = GetComponentInParent<Bot_Sensor>(); // access Bot_Sensor component in parent
+        botPos = GameObject.Find("Bot").transform; // find "Bot" and access transform component
     }
 
     
     void Update()
     {
         transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
-        if (sensor.Detected == true)
+        //rotate to main camera
+        if (sensor.Detected == true) // if player is detected
         {
-            txt.text = "Chasing";
+            txt.text = "Chasing"; // show text "Chasing"
         }
         else
         {
-            txt.text = "Pratoling";
+            txt.text = "Pratoling"; // show text "Pratoling"
         }
     }
 }

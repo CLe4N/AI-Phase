@@ -9,10 +9,9 @@ public class Bot_Sensor : MonoBehaviour
     public bool Detected;
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.FindGameObjectWithTag("Player").transform; // find gameobject with tag "Player" and access transform component
     }
 
-    // Update is called once per frame
     void Update()
     {
         VisionCheck();
@@ -20,19 +19,19 @@ public class Bot_Sensor : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere (transform.position, DectectDis);
+        Gizmos.color = Color.red; // change gizmo color to red
+        Gizmos.DrawWireSphere (transform.position, DectectDis); // draw spehere
     }
 
     void VisionCheck()
     {
-        if(Vector3.Distance(transform.position,Player.position)< DectectDis)
+        if(Vector3.Distance(transform.position,Player.position)< DectectDis) // if player distance is closer than DectectDis
         {
-            Detected = true;
+            Detected = true; // Detected = true
         }
         else
         {
-            Detected = false;
+            Detected = false; // Detected = false
         }
     }
 }
